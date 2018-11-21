@@ -8,7 +8,7 @@ s.license      = "MIT"
 s.author       = "Alipay"
 s.authors      = { "Brian" => "https://github.com/BrianyinIOS" }
 s.platform     = :ios, "6.0"
-s.source       = { :git => "https://github.com/BrianyinIOS/Alipay-SDK-Brian",  :commit => "62bdf94529", :tag => "15.5.7" }
+s.source       = { :git => "https://github.com/BrianyinIOS/Alipay-SDK-Brian", :tag => "15.5.7.1" }
 
 s.resources           = "SDK/AlipaySDK.bundle"
 s.vendored_frameworks = "SDK/AlipaySDK.framework"
