@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="dist/css/bootstrap.css">
+
+    <script src="jquery-3.2.1.js"></script>
+
+    <script src="dist/js/bootstrap.js"></script>
+
+    <title>栅格布局系统</title>
+
+    <style>
+
+        .grid {
+
+            border: 1px solid #696969;
+
+            border-radius: 5px;
+
+            background-color: lightskyblue;
+
+            min-height: 30px;
+
+            text-align: center;
+
+            line-height: 30px;
+
+        }
+
+        .green {
+
+            background-color: lightgreen;
+
+        }
+
+        .pink {
+
+            background-color: lightpink;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h4>整行:</h4>
+
+    <div class="row">
+
+        <div class="col-md-12 grid">内容</div>
+
+    </div>
+
+    <h4>二等分:</h4>
+
+    <div class="row">
+
+        <!--<div class="col-md-6 grid">内容</div>-->
+
+        <!--大屏39分-->
+
+        <!--<div class="col-md-6 col-lg-3 grid green">内容</div>-->
+
+        <!--小屏48分-->
+
+        <div class="col-md-6 col-lg-3 col-sm-4 grid green">内容</div>
+
+        <!--<div class="col-md-6 col-sm-8  grid">内容</div>-->
+
+        <!--<div class=" col-md-6 grid">内容</div>-->
+
+        <!--<div class=" col-md-6 col-lg-9 grid pink">内容</div>-->
+
+        <div class=" col-md-6 col-lg-9 grid col-sm-8 pink">内容</div>
+
+        <!--<div class=" col-md-6 col-sm-4 grid">内容</div>-->
+
+    </div>
+
+    <h4>三等分:</h4>
+
+    <div class="row">
+
+        <div class="col-md-4 grid">内容</div>
+
+        <div class="col-md-4 grid">内容</div>
+
+        <div class="col-md-4 grid">内容</div>
+
+    </div>
+
+    <h4>四等分:</h4>
+
+    <div class="row">
+
+        <div class="col-md-3 grid">内容</div>
+
+        <div class="col-md-3 grid">内容</div>
+
+        <div class="col-md-3 grid">内容</div>
+
+        <div class="col-md-3 grid">内容</div>
+
+    </div>
+
+    <!--<h4>五等分:12除5除不尽,不用五等分</h4>-->
+
+    <h4>六等分:</h4>
+
+    <div class="row">
+
+        <div class="col-md-2 grid">内容</div>
+
+        <div class="col-md-2 grid">内容</div>
+
+        <div class="col-md-2 grid">内容</div>
+
+        <div class="col-md-2 grid">内容</div>
+
+        <div class="col-md-2 grid">内容</div>
+
+        <div class="col-md-2 grid">内容</div>
+
+    </div>
+
+    <h4>四八开:</h4>
+
+    <div class="row">
+
+        <div class="col-md-4 grid">内容</div>
+
+        <div class="col-md-8 grid">内容</div>
+
+    </div>
+
+    <h4>三九开:</h4>
+
+    <div class="row">
+
+        <div class="col-md-3 grid">内容</div>
+
+        <div class="col-md-9 grid">内容</div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

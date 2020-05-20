@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>加入别急</title>
+    <script src="./js/jquery-1.10.2.min.js.js"></script>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: rgba(255, 204, 0, 1);
+        }
+        .back{
+            width:6.90rem;
+            height:13.42rem;
+            background:rgba(255,255,255,1);
+            border-radius:0.30rem;
+            margin: auto;
+            margin-top: 0.2rem;
+        }
+    </style>
+</head>
+<body>
+<div class="back"></div>
+</body>
+<script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 640) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+</script>
+</html>

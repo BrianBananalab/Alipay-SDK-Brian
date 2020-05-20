@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" charset="UTF-8"  content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>别急</title>
+    <script src="./js/jquery-1.10.2.min.js.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-overflow-scrolling: touch;
+            overflow-scrolling: touch;
+        }
+
+        .app {
+            height: 1rem;
+            display: flex;
+            justify-content: space-between;
+            background-color: #ffffff;
+            box-sizing: border-box;
+            position: fixed;
+            left: 0;
+            right: 0;
+            top:0;
+        }
+
+        .appLeft {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .appMod {
+            width: 1.06rem;
+            height: 1.06rem;
+            margin-top: -0.02rem;
+        }
+
+        .appBot {
+            margin-left: 0.02rem;
+        }
+
+        .linetop {
+            font-size: 0.28rem;
+            font-weight: 500;
+            color: rgba(50, 50, 50, 1);
+            line-height: 0.6rem;
+        }
+
+        .linetbot {
+            font-size: 0.22rem;
+            font-weight: 400;
+            color: rgba(153, 153, 153, 1);
+            line-height: 0.32rem;
+        }
+
+        .appRight {
+            width: 1.1rem;
+            background: linear-gradient(156deg, rgba(226, 199, 150, 1) 0%, rgba(201, 164, 95, 1) 100%, rgba(252, 200, 99, 1) 100%);
+            font-size: 0.28rem;
+            font-family: PingFangSC-Medium, PingFangSC;
+            font-weight: 500;
+            color: rgba(43, 44, 70, 1);
+            line-height: 0.45rem;
+            text-align: center;
+            padding: 0.05rem 0.1rem;
+            box-sizing: border-box;
+        }
+
+        .rightNow {
+            width: 3.64rem;
+            height: 0.78rem;
+            background: linear-gradient(156deg, rgba(226, 199, 150, 1) 0%, rgba(201, 164, 95, 1) 100%, rgba(252, 200, 99, 1) 100%);
+            border-radius: 0.39rem;
+            margin: auto;
+            position: fixed;
+            bottom: 1rem;
+            left: 2rem;
+            font-size: 0.32rem;
+            font-weight: 500;
+            color: rgba(43, 44, 70, 1);
+            line-height: 0.78rem;
+            text-align: center;
+        }
+
+        button:after {
+
+        }
+        .photo{
+            margin-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div style="position: relative;overflow: hidden" id="page">
+    <div class="app">
+        <div class="appLeft">
+            <div class="appMod">
+                <img src="https://biejitech.oss-cn-beijing.aliyuncs.com/biejixcx/images/logoH5.png" alt=""
+                     style="width: 100%;height: 100%;">
+            </div>
+            <div class="appBot">
+                <div class="linetop">别急APP</div>
+                <div class="linetbot">别急,我来了</div>
+            </div>
+        </div>
+        <div class="appRight" onclick="openApp()" style="">
+            <div>立即<br>打开</div>
+        </div>
+    </div>
+    <div class="photo">
+        <img src="https://biejitech.oss-cn-beijing.aliyuncs.com/biejixcx/images/jumpApp.png" alt=""
+             style="width: 100%;height: 100%;">
+    </div>
+    <div class="rightNow" onclick="openApp()">在APP中打开</div>
+</div>
+<script type="text/javascript">
+    (function (doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function () {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 640) {
+                    docEl.style.fontSize = '100px';
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + 'px';
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+    })(document, window);
+    function openApp(){
+        if(navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            var loadDateTime = new Date();
+            window.setTimeout(function() {
+                var timeOutDateTime = new Date();
+                if(timeOutDateTime - loadDateTime < 5000) {
+                    window.location = "https://apps.apple.com/cn/app/%E5%88%AB%E6%80%A5%E7%A7%91%E6%8A%80/id1503117570";
+                } else {
+                    window.close();
+                }
+            },25);
+            window.location = "wxd4dde5bcfa6702de://";
+        } else if(navigator.userAgent.match(/android/i)) {
+            var loadDateTime = new Date();
+            window.setTimeout(function() {
+                var timeOutDateTime = new Date();
+                if(timeOutDateTime - loadDateTime < 5000) {
+                    window.location = "https://sj.qq.com/myapp/detail.htm?apkName=com.ibieji.app";
+                } else {
+                    window.close();
+                }
+            },25);
+            window.location.herf="biejiapp://bieji.app/openwith?name=zhangsan&age=26";
+            // window.location.herf="hanchenapp://hanchen.app/openwith?name=zhangsan&age=26";
+        }
+    }
+</script>
+</body>
+</html>

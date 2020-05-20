@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" charset="UTF-8"
+          content="width=device-width,initial-scale=1.0,minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>注册别急</title>
+    <script src="./js/jquery-1.10.2.min.js.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0.5rem 0.5rem;
+            box-sizing: border-box;
+        }
+
+        .logo {
+            width: 3rem;
+            height: 0.54rem;
+            margin-top: 0.50rem;
+        }
+
+        .bieji {
+            width: 4.32rem;
+            height: 1rem;
+            font-size: 0.72rem;
+            font-family: AlibabaPuHuiTiM;
+            color: rgba(35, 35, 35, 1);
+            line-height: 1rem;
+            margin-top: 1rem;
+        }
+
+        .phone {
+            margin-top: 1.02rem;
+        }
+
+        .Input {
+            width: 6.3rem;
+            height: 0.78rem;
+            /*padding-bottom: 0.16rem;*/
+            /*box-sizing: border-box;*/
+            /*margin-top: 0.24rem;*/
+            border-bottom: 0.02rem solid #DADADA;
+            font-size: 0.34rem;
+            font-weight: 400;
+            color: rgba(50, 50, 50, 1);
+            line-height: 0.78rem;
+            /*background-color: aqua;*/
+        }
+
+        .phoneName {
+            font-size: 0.32rem;
+            font-weight: 400;
+            color: rgba(50, 50, 50, 1);
+            line-height: 0.34rem;
+        }
+
+        .InputPass {
+            width: 4.88rem;
+            height: 0.78rem;
+            /*padding-bottom: 0.16rem;*/
+            /*box-sizing: border-box;*/
+            margin-top: 0.24rem;
+            border-bottom: 0.02rem solid #DADADA;
+            font-size: 0.34rem;
+            font-weight: 400;
+            color: rgba(50, 50, 50, 1);
+            line-height: 0.48rem;
+        }
+
+        .bot {
+            width: 2.7rem;
+            height: 0.80rem;
+            border-radius: 0.08rem;
+            border: 0.02rem solid rgba(0, 0, 0, 1);
+            text-align: center;
+            font-size: 0.24rem;
+            font-weight: 400;
+            color: rgba(35, 35, 35, 1);
+            line-height: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        .subDemand {
+            width: 6.30rem;
+            height: 1.00rem;
+            background: rgba(255, 217, 68, 1);
+            border-radius: 0.28rem;
+            margin: auto;
+            margin-top: 0.48rem;
+            font-size: 0.30rem;
+            font-weight: 500;
+            color: rgba(38, 37, 34, 1);
+            line-height: 1.00rem;
+            text-align: center;
+            margin-top: 1.00rem;
+        }
+
+        input {
+            background: none;
+            outline: none;
+            border: none;
+        }
+
+        input:focus {
+            border: none;
+        }
+
+        #mask {
+            width: 100%;
+            height: auto;
+            background: rgba(0, 0, 0, 0.6951999999999999);
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        #newUser {
+            width: 5.46rem;
+            height: 6.32rem;
+            margin: auto;
+            margin-top: 2.00rem;
+            z-index: 9999;
+        }
+
+        #close {
+            width: 0.50rem;
+            height: 0.50rem;
+            margin: auto;
+            margin-top: 0.20rem;
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+<div>
+    <div class="logo">
+        <img src="https://biejitech.oss-cn-beijing.aliyuncs.com/biejixcx/images/logoBieji.png"
+             style="width: 100%;height: 100%"/>
+    </div>
+    <div class="bieji">别急，我来了</div>
+    <div class="phone">
+        <div class="phoneName">手机号码</div>
+        <div class="Input">
+            <input type="number" id="user" maxlength="11" placeholder="请输入手机号"
+                   style="width: 3rem;height: 0.8rem;font-size: 0.3rem"/>
+        </div>
+    </div>
+    <div class="subDemand" onclick="logIn()">加入别急,享受轻松生活</div>
+    <div id="mask" style="display: none">
+        <div id="newUser" onclick="receive()">
+            <img src="https://biejitech.oss-cn-beijing.aliyuncs.com/biejixcx/images/newUser.png"
+                 style="width:100%;height:100%;"/>
+        </div>
+        <div id="close" onclick="guanbi()">
+            <img src="https://biejitech.oss-cn-beijing.aliyuncs.com/biejixcx/images/close.png"
+                 style="width:100%;height:100%;"/>
+        </div>
+    </div>
+    <div id="tanChuang" style="margin-left:-2rem;width:4rem;color:#fff;display: none;height: 0.8rem;font-size: 0.3rem;background-color: rgba(35, 35, 35, 0.7);text-align: center;line-height: 0.8rem;border-radius: 0.08rem;position: fixed;top: 5.49rem;left:50%;"></div>
+    <div id="phoneTan" style="margin-left:-2rem;width:4rem;color:#fff;display: none;height: 0.8rem;font-size: 0.3rem;background-color: rgba(35, 35, 35, 0.7);text-align: center;line-height: 0.8rem;border-radius: 0.08rem;position: fixed;top: 5.49rem;left:50%;"></div>
+</div>
+</body>
+<script>
+    (function (doc, win) {
+        console.log('--1初次加载')
+        var docEl = doc.documentElement,
+            resizeEvt = 'orientationchange' in window ? 'orientationchange' : 'resize',
+            recalc = function (ev) {
+                console.log('--3加载完毕-后', ev)
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                // 这里要填的是设计稿的尺寸
+                let designWidth = 750;
+                docEl.style.fontSize = 100 * (clientWidth / designWidth) + 'px';
+                console.log(docEl.style.fontSize)
+            };
+        console.log('resizeEvt:', resizeEvt)
+        if (!doc.addEventListener) return;
+        // 这个doc应该某个dom元素，addEventListener是dom元素上的一个方法，用于绑定事件
+        // !doc.addEventListener表示doc这个dom没有addEventListener方法（只针对老版本IE，不过现在的移动端基本上都有），就退出当前函数（此语句的上下文应该是在一个函数内，这个函数内的后面代码就不执行了）
+        win.addEventListener(resizeEvt, recalc, false);
+        doc.addEventListener('DOMContentLoaded', recalc, false);
+        console.log('--2初次加载--完毕')
+
+    })(document, window);
+    var token
+
+    function logIn() {
+        var phoneNum = document.getElementById('user').value
+        var url = window.location.href
+
+        function getParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = url.split("?")[1].match(reg); //匹配目标参数
+            if (r != null) {
+                return decodeURIComponent(r[2]);
+
+            }
+            return null; //返回参数值
+        }
+
+        var recommendCode = getParam("recommendCode");
+        console.log(recommendCode)
+        if(phoneNum == ''){
+            $('#phoneTan').text("");
+            $('#phoneTan').append('请输入手机号')
+            $("#phoneTan").show().delay(3000).hide(300);
+        }else{
+            $.ajax({
+                type: "POST",
+                url: "http://wxtest.outiejun.com:9015/login/bingRecommendCode",
+                data: {phone: phoneNum, recommendCode: recommendCode},//请求的参数
+                dataType: "json",//以json格式返回的数据，不是json就把此行去掉
+                success: function (data) {
+                    //此处是返回的值
+                    if (data.code == 200) {
+                        token = data.data.token
+                        document.getElementById('mask').style.display = ''
+                    } else {
+                        $('#tanChuang').text("");
+                        $('#tanChuang').append(data.message)
+                        $("#tanChuang").show().delay(3000).hide(300);
+                        openApp()
+                    }
+                },
+                error: function (result) {
+                }
+            });
+        }
+
+    }
+
+    function openApp() {
+        if (navigator.userAgent.match(/(iPhone|iPod|iPad);?/i)) {
+            var loadDateTime = new Date();
+            window.setTimeout(function () {
+                var timeOutDateTime = new Date();
+                if (timeOutDateTime - loadDateTime < 5000) {
+                    window.location = "https://apps.apple.com/cn/app/%E5%88%AB%E6%80%A5%E7%A7%91%E6%8A%80/id1503117570";
+                } else {
+                    window.close();
+                }
+            }, 25);
+            window.location = "wxd4dde5bcfa6702de://";
+        } else if (navigator.userAgent.match(/android/i)) {
+            var loadDateTime = new Date();
+            window.setTimeout(function () {
+                var timeOutDateTime = new Date();
+                if (timeOutDateTime - loadDateTime < 5000) {
+                    window.location = "https://sj.qq.com/myapp/detail.htm?apkName=com.ibieji.app";
+                } else {
+                    window.close();
+                }
+            }, 25);
+            window.location.herf = "biejiapp://bieji.app/openwith?name=zhangsan&age=26";
+            // window.location.herf="hanchenapp://hanchen.app/openwith?name=zhangsan&age=26";
+        }
+    }
+
+    function receive() {
+        console.log(11111111111)
+        $.ajax({
+            type: "GET",
+            url: "http://wxtest.outiejun.com:9015/user/receive/newVoucher",
+            data: {},//请求的参数
+            beforeSend: function (request) {
+                request.setRequestHeader("token", token);
+            },
+            dataType: "json",//以json格式返回的数据，不是json就把此行去掉
+            success: function (data) {
+                //此处是返回的值
+                document.getElementById('mask').style.display = 'none'
+                window.open('https://a.app.qq.com/o/simple.jsp?pkgname=com.ibieji.app&fromcase=40003')
+            }
+        });
+    }
+
+    function guanbi() {
+        document.getElementById('mask').style.display = 'none';
+        window.open('https://a.app.qq.com/o/simple.jsp?pkgname=com.ibieji.app&fromcase=40003')
+    }
+</script>
+</html>
